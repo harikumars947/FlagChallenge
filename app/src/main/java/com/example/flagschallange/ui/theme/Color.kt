@@ -11,4 +11,5 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 object AppColor{
     val OrangeColor=Color(0xFFFF5722)
+    var lightGray200=Color(0xFFE0E0E0)
 }

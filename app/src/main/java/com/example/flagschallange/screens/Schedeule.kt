@@ -49,37 +49,11 @@ fun Schedule() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 15.dp, end = 15.dp, top = 15.dp),
-        RoundedCornerShape(5.dp)
+        RoundedCornerShape(5.dp),
+        colors = CardDefaults.cardColors(AppColor.lightGray200)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            Row(
-                modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Card(
-                    modifier = Modifier
-                        .height(20.dp)
-                        .width(50.dp), colors = CardDefaults.cardColors(Color.Black),
-                    shape = RoundedCornerShape(5.dp),
-                    elevation = CardDefaults.cardElevation(5.dp)
-                ) {
-                    Text(
-                        text = "00:10", modifier = Modifier
-                            .fillMaxWidth(), color = Color.White,
-                        textAlign = TextAlign.Center
-                    )
-                }
-                Text(
-                    "Flag Challenge",
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    textAlign = TextAlign.Center,
-                    fontSize = 14.sp
-                    , color = AppColor.OrangeColor,
-                    fontWeight = FontWeight.Bold
-                )
-
-            }
+            Heading()
             Text(
                 "", modifier = Modifier
                     .fillMaxWidth()
