@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -47,7 +48,7 @@ fun Result() {
                     .background(color = Color.LightGray)
             )
             Spacer(modifier = Modifier.height(5.dp))
-            Box(modifier = Modifier.fillMaxHeight(),contentAlignment = Alignment.Center) {
+            Box(modifier = Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
                 Text(
                     "GAME OVER",
                     modifier = Modifier
@@ -60,7 +61,57 @@ fun Result() {
             }
         }
 
-//
+
+    }
+
+}
+
+@Composable
+fun FinalScore() {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(150.dp)
+            .padding(start = 15.dp, end = 15.dp, top = 15.dp),
+        RoundedCornerShape(5.dp),
+        colors = CardDefaults.cardColors(AppColor.lightGray200)
+    ) {
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Heading()
+            Text(
+                "", modifier = Modifier
+                    .fillMaxWidth()
+                    .height(1.dp)
+                    .background(color = Color.LightGray)
+            )
+
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Row() {
+                    Text(
+                        "Score : ",
+                        modifier = Modifier,
+                        textAlign = TextAlign.Center,
+                        fontSize = 20.sp, fontWeight = FontWeight.Normal,
+                        color = AppColor.OrangeColor
+                    )
+                    Text(
+                        "20/70",
+                        modifier = Modifier.padding(start = 10.dp),
+                        textAlign = TextAlign.Center,
+                        fontSize = 20.sp, fontWeight = FontWeight.Bold,
+                        color = Color.DarkGray
+                    )
+                }
+
+
+            }
+
+        }
 
 
     }
@@ -71,5 +122,5 @@ fun Result() {
 @Composable
 fun ResultPreview() {
 
-    Result()
+    FinalScore()
 }
