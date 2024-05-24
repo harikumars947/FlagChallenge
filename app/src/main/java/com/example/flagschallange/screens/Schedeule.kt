@@ -39,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.flagschallange.ui.theme.AppColor
 import com.example.flagschallange.ui.theme.FlagsChallangeTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -74,6 +75,8 @@ fun Schedule() {
                         .fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontSize = 14.sp
+                    , color = AppColor.OrangeColor,
+                    fontWeight = FontWeight.Bold
                 )
 
             }
@@ -261,7 +264,7 @@ fun Schedule() {
                     modifier = Modifier
                         .height(30.dp)
                         .width(90.dp),
-                    colors = CardDefaults.cardColors(Color(0xFFFFA500)),
+                    colors = CardDefaults.cardColors(AppColor.OrangeColor),
                     shape = RoundedCornerShape(5.dp)
                 )
                 {
