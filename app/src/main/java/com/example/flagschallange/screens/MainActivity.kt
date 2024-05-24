@@ -3,7 +3,10 @@ package com.example.flagschallange.screens
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -16,7 +19,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FlagsChallangeTheme {
+            /*FlagsChallangeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -24,6 +27,9 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Greeting("Android")
                 }
+            }*/
+            Surface(modifier = Modifier.fillMaxWidth().wrapContentHeight()) {
+                Greeting("Android")
             }
         }
     }
@@ -31,10 +37,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+   Schedule()
 }
 
 @Preview(showBackground = true)
