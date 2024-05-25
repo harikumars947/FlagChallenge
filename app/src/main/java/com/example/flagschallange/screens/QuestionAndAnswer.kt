@@ -52,7 +52,7 @@ import com.example.flagschallange.viewmodels.QuestionAnswerViewModel
 
 
 @Composable
-fun QuestionAns(navController: NavHostController,globalViewModel: GlobalModel) {
+fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) {
     val viewModel: QuestionAnswerViewModel = QuestionAnswerViewModel()
     var question: Questions? = null
     val context = LocalContext.current
@@ -87,7 +87,7 @@ fun QuestionAns(navController: NavHostController,globalViewModel: GlobalModel) {
                 sharedPreferences?.edit()?.putInt("count", ++temp)?.apply()
             } else {
                 sharedPreferences?.edit()?.putInt("count", 0)?.apply()
-                navController.navigate(Constants.GAME_OVER)
+                navController.navigate(Constants.SCORE)
             }
 
         }
@@ -195,10 +195,17 @@ fun QuestionAns(navController: NavHostController,globalViewModel: GlobalModel) {
                         Card(
                             modifier = Modifier.clickable {
 
-                                globalViewModel.updateGlobalVariable(globalVariable.value + 1)
+
                                 var temp = returnAnser(question)
-//                                println(globalVariable.value)
-                                Toast.makeText(context,""+globalVariable.value,Toast.LENGTH_SHORT).show()
+                                if (question?.answerId == question?.countries?.get(0)?.id) {
+                                    globalViewModel.updateGlobalVariable(globalVariable.value + 1)
+                                }
+
+                                Toast.makeText(
+                                    context,
+                                    "" + globalVariable.value,
+                                    Toast.LENGTH_SHORT
+                                ).show()
                                 when (temp) {
                                     0 -> {
                                         firstAswerTrue = true
@@ -256,7 +263,9 @@ fun QuestionAns(navController: NavHostController,globalViewModel: GlobalModel) {
                         Card(
                             modifier = Modifier.clickable {
                                 var temp = returnAnser(question)
-
+                                if (question?.answerId == question?.countries?.get(1)?.id) {
+                                    globalViewModel.updateGlobalVariable(globalVariable.value + 1)
+                                }
                                 when (temp) {
                                     0 -> {
                                         firstAswerTrue = true
@@ -324,7 +333,9 @@ fun QuestionAns(navController: NavHostController,globalViewModel: GlobalModel) {
                         Card(
                             modifier = Modifier.clickable {
                                 var temp = returnAnser(question)
-
+                                if (question?.answerId == question?.countries?.get(2)?.id) {
+                                    globalViewModel.updateGlobalVariable(globalVariable.value + 1)
+                                }
                                 when (temp) {
                                     0 -> {
                                         firstAswerTrue = true
@@ -382,7 +393,9 @@ fun QuestionAns(navController: NavHostController,globalViewModel: GlobalModel) {
                         Card(
                             modifier = Modifier.clickable {
                                 var temp = returnAnser(question)
-
+                                if (question?.answerId == question?.countries?.get(3)?.id) {
+                                    globalViewModel.updateGlobalVariable(globalVariable.value + 1)
+                                }
                                 when (temp) {
                                     0 -> {
                                         firstAswerTrue = true

@@ -72,10 +72,14 @@ fun navigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Constants.QUESTIO_ANSWER_SCREEN) {
         composable(Constants.QUESTIO_ANSWER_SCREEN) {
-            QuestionAns(navController,globalViewModel)
+            QuestionAns(navController, globalViewModel)
         }
         composable(Constants.GAME_OVER) {
             Result()
+        }
+
+        composable(Constants.SCORE) {
+            FinalScore(globalViewModel)
         }
         /*composable(
             "mainscreen/{user}",
@@ -93,8 +97,6 @@ fun navigation() {
 
     }
 }
-
-
 
 
 @Preview(showBackground = true)

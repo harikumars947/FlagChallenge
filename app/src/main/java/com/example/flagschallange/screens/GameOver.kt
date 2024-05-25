@@ -18,6 +18,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.flagschallange.ui.theme.AppColor
+import com.example.flagschallange.viewmodels.GlobalModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,7 +69,8 @@ fun Result() {
 }
 
 @Composable
-fun FinalScore() {
+fun FinalScore(globalViewModel: GlobalModel) {
+    val globalVariable = globalViewModel.globalVariable.collectAsState()
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -100,7 +103,7 @@ fun FinalScore() {
                         color = AppColor.OrangeColor
                     )
                     Text(
-                        "20/70",
+                        "${globalVariable.value}/15",
                         modifier = Modifier.padding(start = 10.dp),
                         textAlign = TextAlign.Center,
                         fontSize = 20.sp, fontWeight = FontWeight.Bold,
@@ -121,6 +124,6 @@ fun FinalScore() {
 @Preview(showBackground = true)
 @Composable
 fun ResultPreview() {
-
-    FinalScore()
+    val globalViewModel= GlobalModel()
+    FinalScore(globalViewModel)
 }
