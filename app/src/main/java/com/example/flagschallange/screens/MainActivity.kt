@@ -96,6 +96,10 @@ fun navigation() {
             FinalScore(globalViewModel)
         }
 
+        composable(Constants.REMINDER) {
+            Remainder(navController, globalViewModel)
+        }
+
 
 
     }

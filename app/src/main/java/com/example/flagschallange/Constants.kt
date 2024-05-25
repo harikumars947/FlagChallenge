@@ -6,6 +6,7 @@ class Constants {
         val GAME_OVER="GAME_OVER"
         val SCORE="SCRORE"
         val SCHEDULER="SCHEDULER"
+        val REMINDER="REMINDER"
     }
 
 }

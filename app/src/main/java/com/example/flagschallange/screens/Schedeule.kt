@@ -254,7 +254,7 @@ fun Schedule(navController: NavHostController) {
                 Card(
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Constants.QUESTIO_ANSWER_SCREEN)
+                            navController.navigate(Constants.REMINDER)
                         }
                         .height(dimensionResource(R.dimen._30dp))
                         .width(dimensionResource(R.dimen._90dp)),
