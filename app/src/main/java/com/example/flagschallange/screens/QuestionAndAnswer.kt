@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -97,8 +98,13 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 15.dp, end = 15.dp, top = 15.dp, bottom = 15.dp),
-        RoundedCornerShape(5.dp),
+            .padding(
+                start = dimensionResource(R.dimen._15dp),
+                end = dimensionResource(R.dimen._15dp),
+                top = dimensionResource(R.dimen._15dp),
+                bottom = dimensionResource(R.dimen._15dp)
+            ),
+        RoundedCornerShape(dimensionResource(R.dimen._5dp)),
         colors = CardDefaults.cardColors(AppColor.lightGray200)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -106,19 +112,20 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
             Text(
                 "", modifier = Modifier
                     .fillMaxWidth()
-                    .height(1.dp)
+                    .height(dimensionResource(R.dimen._1dp))
                     .background(color = Color.LightGray)
             )
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen._10dp)))
             Row(modifier = Modifier.fillMaxWidth()) {
                 Card(
                     modifier = Modifier
-                        .height(30.dp)
-                        .width(50.dp), colors = CardDefaults.cardColors(Color.Black),
+                        .height(dimensionResource(R.dimen._30dp))
+                        .width(dimensionResource(R.dimen._50dp)),
+                    colors = CardDefaults.cardColors(Color.Black),
                     shape = RoundedCornerShape(
                         topStart = 0.dp, bottomStart = 0.dp,
-                        topEnd = 5.dp,
-                        bottomEnd = 5.dp
+                        topEnd = dimensionResource(R.dimen._5dp),
+                        bottomEnd = dimensionResource(R.dimen._5dp)
                     ),
                     elevation = CardDefaults.cardElevation(5.dp)
                 )
@@ -129,8 +136,8 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                     ) {
                         Card(
                             modifier = Modifier
-                                .height(30.dp)
-                                .width(30.dp), shape = CircleShape,
+                                .height(dimensionResource(R.dimen._30dp))
+                                .width(dimensionResource(R.dimen._30dp)), shape = CircleShape,
                             colors = CardDefaults.cardColors(AppColor.OrangeColor)
                         ) {
 
@@ -161,15 +168,18 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
             }
             Spacer(
                 modifier = Modifier
-                    .height(5.dp)
+                    .height(dimensionResource(R.dimen._5dp))
                     .fillMaxWidth()
             )
             Row(modifier = Modifier.fillMaxWidth()) {
                 Card(
                     modifier = Modifier
-                        .width(100.dp)
-                        .height(80.dp)
-                        .padding(start = 10.dp, bottom = 10.dp),
+                        .width(dimensionResource(R.dimen._100dp))
+                        .height(dimensionResource(R.dimen._80dp))
+                        .padding(
+                            start = dimensionResource(R.dimen._10dp),
+                            bottom = dimensionResource(R.dimen._10dp)
+                        ),
                     colors = CardDefaults.cardColors(Color.LightGray)
                 ) {
                     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
@@ -179,8 +189,8 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                             contentDescription = "", // Provide a meaningful description
 
                             modifier = Modifier
-                                .width(70.dp)
-                                .height(50.dp)
+                                .width(dimensionResource(R.dimen._70dp))
+                                .height(dimensionResource(R.dimen._50dp))
                         )
 
                     }
@@ -201,11 +211,6 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                                     globalViewModel.updateGlobalVariable(globalVariable.value + 1)
                                 }
 
-                                Toast.makeText(
-                                    context,
-                                    "" + globalVariable.value,
-                                    Toast.LENGTH_SHORT
-                                ).show()
                                 when (temp) {
                                     0 -> {
                                         firstAswerTrue = true
@@ -242,18 +247,23 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                             },
                             colors = if (!firstAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
                             else CardDefaults.cardColors(AppColor.OrangeColor),
-                            shape = RoundedCornerShape(5.dp),
-                            border = if (!firstAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
+                            shape = RoundedCornerShape(dimensionResource(R.dimen._5dp)),
+                            border = if (!firstAswerTrue) BorderStroke(
+                                dimensionResource(R.dimen._1dp),
+                                Color.DarkGray
+                            ) else
                                 BorderStroke(1.dp, Color.Green),
-                            elevation = CardDefaults.cardElevation(5.dp)
+                            elevation = CardDefaults.cardElevation(dimensionResource(R.dimen._5dp))
                         ) {
                             Text(
                                 text = limitedLengthText(
                                     question?.countries?.get(0)?.countryName ?: ""
                                 ),
                                 modifier = Modifier.padding(
-                                    start = 20.dp, end = 20.dp,
-                                    top = 5.dp, bottom = 5.dp
+                                    start = dimensionResource(R.dimen._20dp),
+                                    end = dimensionResource(R.dimen._20dp),
+                                    top = dimensionResource(R.dimen._5dp),
+                                    bottom = dimensionResource(R.dimen._5dp)
                                 ),
                                 maxLines = 1,
                                 color = Color.Black,
@@ -302,18 +312,23 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                             },
                             colors = if (!secondAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
                             else CardDefaults.cardColors(AppColor.OrangeColor),
-                            shape = RoundedCornerShape(5.dp),
-                            border = if (!secondAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
+                            shape = RoundedCornerShape(dimensionResource(R.dimen._5dp)),
+                            border = if (!secondAswerTrue) BorderStroke(
+                                dimensionResource(R.dimen._1dp),
+                                Color.DarkGray
+                            ) else
                                 BorderStroke(1.dp, Color.Green),
-                            elevation = CardDefaults.cardElevation(5.dp)
+                            elevation = CardDefaults.cardElevation(dimensionResource(R.dimen._5dp))
                         ) {
                             Text(
                                 text = limitedLengthText(
                                     question?.countries?.get(1)?.countryName ?: ""
                                 ),
                                 modifier = Modifier.padding(
-                                    start = 20.dp, end = 20.dp,
-                                    top = 5.dp, bottom = 5.dp
+                                    start = dimensionResource(R.dimen._20dp),
+                                    end = dimensionResource(R.dimen._20dp),
+                                    top = dimensionResource(R.dimen._5dp),
+                                    bottom = dimensionResource(R.dimen._5dp)
                                 ),
                                 maxLines = 1,
                                 color = Color.Black,
@@ -324,7 +339,7 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                     Spacer(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(10.dp)
+                            .height(dimensionResource(R.dimen._10dp))
                     )
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -372,18 +387,23 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                             },
                             colors = if (!thirdAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
                             else CardDefaults.cardColors(AppColor.OrangeColor),
-                            shape = RoundedCornerShape(5.dp),
-                            border = if (!thirdAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
-                                BorderStroke(1.dp, Color.Green),
-                            elevation = CardDefaults.cardElevation(5.dp)
+                            shape = RoundedCornerShape(dimensionResource(R.dimen._5dp)),
+                            border = if (!thirdAswerTrue) BorderStroke(
+                                dimensionResource(R.dimen._1dp),
+                                Color.DarkGray
+                            ) else
+                                BorderStroke(dimensionResource(R.dimen._1dp), Color.Green),
+                            elevation = CardDefaults.cardElevation(dimensionResource(R.dimen._5dp))
                         ) {
                             Text(
                                 text = limitedLengthText(
                                     question?.countries?.get(2)?.countryName ?: ""
                                 ),
                                 modifier = Modifier.padding(
-                                    start = 20.dp, end = 20.dp,
-                                    top = 5.dp, bottom = 5.dp
+                                    start = dimensionResource(R.dimen._20dp),
+                                    end = dimensionResource(R.dimen._20dp),
+                                    top = dimensionResource(R.dimen._5dp),
+                                    bottom = dimensionResource(R.dimen._5dp)
                                 ),
                                 maxLines = 1,
                                 color = Color.Black,
@@ -432,18 +452,23 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                             },
                             colors = if (!fourthAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
                             else CardDefaults.cardColors(AppColor.OrangeColor),
-                            shape = RoundedCornerShape(5.dp),
-                            border = if (!fourthAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
-                                BorderStroke(1.dp, Color.Green),
-                            elevation = CardDefaults.cardElevation(5.dp)
+                            shape = RoundedCornerShape(dimensionResource(R.dimen._5dp)),
+                            border = if (!fourthAswerTrue) BorderStroke(
+                                dimensionResource(R.dimen._1dp),
+                                Color.DarkGray
+                            ) else
+                                BorderStroke(dimensionResource(R.dimen._1dp), Color.Green),
+                            elevation = CardDefaults.cardElevation(dimensionResource(R.dimen._5dp))
                         ) {
                             Text(
                                 text = limitedLengthText(
                                     question?.countries?.get(3)?.countryName ?: ""
                                 ),
                                 modifier = Modifier.padding(
-                                    start = 20.dp, end = 20.dp,
-                                    top = 5.dp, bottom = 5.dp
+                                    start = dimensionResource(R.dimen._20dp),
+                                    end = dimensionResource(R.dimen._20dp),
+                                    top = dimensionResource(R.dimen._5dp),
+                                    bottom = dimensionResource(R.dimen._5dp)
                                 ),
                                 maxLines = 1,
                                 color = Color.Black,
