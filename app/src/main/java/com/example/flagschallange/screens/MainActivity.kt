@@ -81,7 +81,10 @@ class MainActivity : ComponentActivity() {
 fun navigation() {
     val globalViewModel: GlobalModel = viewModel()
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Constants.QUESTIO_ANSWER_SCREEN) {
+    NavHost(navController = navController, startDestination = Constants.SCHEDULER) {
+        composable(Constants.SCHEDULER) {
+            Schedule(navController)
+        }
         composable(Constants.QUESTIO_ANSWER_SCREEN) {
             QuestionAns(navController, globalViewModel)
         }
@@ -92,6 +95,8 @@ fun navigation() {
         composable(Constants.SCORE) {
             FinalScore(globalViewModel)
         }
+
+
 
     }
 }
