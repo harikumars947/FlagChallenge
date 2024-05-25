@@ -49,6 +49,7 @@ import com.example.flagschallange.R
 import com.example.flagschallange.ui.theme.AppColor
 import com.example.flagschallange.viewmodels.QuestionAnswerViewModel
 
+
 @Composable
 fun QuestionAns(navController: NavHostController) {
     val viewModel: QuestionAnswerViewModel = QuestionAnswerViewModel()
@@ -57,6 +58,14 @@ fun QuestionAns(navController: NavHostController) {
     val root = viewModel.readJsonFromAssets(context = LocalContext.current, "questions.json")
     val isTimerRunning = viewModel.isTimerRunning.collectAsState()
     var temp = 0
+    var firstAswerTrue by remember { mutableStateOf(false) }
+    var secondAswerTrue by remember { mutableStateOf(false) }
+    var thirdAswerTrue by remember { mutableStateOf(false) }
+    var fourthAswerTrue by remember { mutableStateOf(false) }
+    var firstAswerColor by remember { mutableStateOf(false) }
+    var secondAswerColor by remember { mutableStateOf(false) }
+    var thirdAswerColor by remember { mutableStateOf(false) }
+    var fourthAswerColor by remember { mutableStateOf(false) }
     if (isTimerRunning.value) {
         val sharedPreferences =
             context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
@@ -64,6 +73,14 @@ fun QuestionAns(navController: NavHostController) {
         if (root != null) {
             if (temp < root.questions.size) {
                 viewModel?.startTimer()
+                firstAswerTrue = false
+                secondAswerTrue = false
+                thirdAswerTrue = false
+                fourthAswerTrue = false
+                firstAswerColor = false
+                secondAswerColor = false
+                thirdAswerColor = false
+                fourthAswerColor = false
                 question = root?.questions?.get(temp)
                 sharedPreferences?.edit()?.putInt("count", ++temp)?.apply()
             } else {
@@ -175,11 +192,47 @@ fun QuestionAns(navController: NavHostController) {
                     ) {
                         Card(
                             modifier = Modifier.clickable {
-                                Toast.makeText(context, "Clicked", Toast.LENGTH_LONG).show()
+                                var temp = returnAnser(question)
+
+                                when (temp) {
+                                    0 -> {
+                                        firstAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+
+                                    1 -> {
+                                        secondAswerTrue = true
+                                        firstAswerColor = true
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+
+                                    2 -> {
+                                        thirdAswerTrue = true
+                                        firstAswerColor = true
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+
+                                    3 -> {
+                                        fourthAswerTrue = true
+                                        firstAswerColor = true
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+                                }
                             },
-                            colors = CardDefaults.cardColors(AppColor.lightGray200),
+                            colors = if (!firstAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
+                            else CardDefaults.cardColors(AppColor.OrangeColor),
                             shape = RoundedCornerShape(5.dp),
-                            border = BorderStroke(1.dp, Color.DarkGray),
+                            border = if (!firstAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
+                                BorderStroke(1.dp, Color.Green),
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
@@ -194,10 +247,48 @@ fun QuestionAns(navController: NavHostController) {
                             )
                         }
                         Card(
-                            modifier = Modifier,
-                            colors = CardDefaults.cardColors(AppColor.lightGray200),
+                            modifier =Modifier.clickable {
+                                var temp = returnAnser(question)
+
+                                when (temp) {
+                                    0 -> {
+                                        firstAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = true
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+
+                                    1 -> {
+                                        secondAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+
+                                    2 -> {
+                                        thirdAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = true
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+
+                                    3 -> {
+                                        fourthAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = true
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+                                }
+                            },
+                            colors = if (!secondAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
+                            else CardDefaults.cardColors(AppColor.OrangeColor),
                             shape = RoundedCornerShape(5.dp),
-                            border = BorderStroke(1.dp, Color.DarkGray),
+                            border = if (!secondAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
+                                BorderStroke(1.dp, Color.Green),
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
@@ -222,10 +313,48 @@ fun QuestionAns(navController: NavHostController) {
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Card(
-                            modifier = Modifier,
-                            colors = CardDefaults.cardColors(AppColor.lightGray200),
+                            modifier =Modifier.clickable {
+                                var temp = returnAnser(question)
+
+                                when (temp) {
+                                    0 -> {
+                                        firstAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = true
+                                        fourthAswerColor = false
+                                    }
+
+                                    1 -> {
+                                        secondAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = true
+                                        fourthAswerColor = false
+                                    }
+
+                                    2 -> {
+                                        thirdAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+
+                                    3 -> {
+                                        fourthAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = true
+                                        fourthAswerColor = false
+                                    }
+                                }
+                            },
+                            colors = if (!thirdAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
+                            else CardDefaults.cardColors(AppColor.OrangeColor),
                             shape = RoundedCornerShape(5.dp),
-                            border = BorderStroke(1.dp, Color.DarkGray),
+                            border = if (!thirdAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
+                                BorderStroke(1.dp, Color.Green),
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
@@ -240,10 +369,48 @@ fun QuestionAns(navController: NavHostController) {
                             )
                         }
                         Card(
-                            modifier = Modifier,
-                            colors = CardDefaults.cardColors(AppColor.lightGray200),
+                            modifier  =Modifier.clickable {
+                                var temp = returnAnser(question)
+
+                                when (temp) {
+                                    0 -> {
+                                        firstAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = true
+                                    }
+
+                                    1 -> {
+                                        secondAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = true
+                                    }
+
+                                    2 -> {
+                                        thirdAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = true
+                                    }
+
+                                    3 -> {
+                                        fourthAswerTrue = true
+                                        firstAswerColor = false
+                                        secondAswerColor = false
+                                        thirdAswerColor = false
+                                        fourthAswerColor = false
+                                    }
+                                }
+                            },
+                            colors = if (!fourthAswerColor) CardDefaults.cardColors(AppColor.lightGray200)
+                            else CardDefaults.cardColors(AppColor.OrangeColor),
                             shape = RoundedCornerShape(5.dp),
-                            border = BorderStroke(1.dp, Color.DarkGray),
+                            border = if (!fourthAswerTrue) BorderStroke(1.dp, Color.DarkGray) else
+                                BorderStroke(1.dp, Color.Green),
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
@@ -285,6 +452,21 @@ fun limitedLengthText(text: String): String {
     }
 
 //    Text(text = truncatedText)
+}
+
+
+fun checkTheAnswer(question: Questions?, position: Int): Boolean {
+    if (question?.answerId == question?.countries?.get(position)?.id) {
+        return true;
+    } else {
+        return false
+    }
+}
+
+fun returnAnser(question: Questions?): Int {
+    var temp = question?.answerId
+    var index = question?.countries?.indexOfFirst { it.id == temp }
+    return index!!.toInt()
 }
 
 
