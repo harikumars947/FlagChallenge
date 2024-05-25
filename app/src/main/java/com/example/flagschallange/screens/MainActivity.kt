@@ -16,12 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.example.RootQuestions
 import com.example.flagschallange.Constants
 import com.example.flagschallange.ui.theme.FlagsChallangeTheme
+import com.example.flagschallange.viewmodels.GlobalModel
 import com.example.flagschallange.viewmodels.QuestionAnswerViewModel
 import com.google.gson.Gson
 import java.io.File
@@ -66,10 +68,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun navigation() {
+    val globalViewModel: GlobalModel = viewModel()
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Constants.QUESTIO_ANSWER_SCREEN) {
         composable(Constants.QUESTIO_ANSWER_SCREEN) {
-            QuestionAns(navController)
+            QuestionAns(navController,globalViewModel)
         }
         composable(Constants.GAME_OVER) {
             Result()

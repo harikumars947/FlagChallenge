@@ -47,17 +47,19 @@ import com.example.example.RootQuestions
 import com.example.flagschallange.Constants
 import com.example.flagschallange.R
 import com.example.flagschallange.ui.theme.AppColor
+import com.example.flagschallange.viewmodels.GlobalModel
 import com.example.flagschallange.viewmodels.QuestionAnswerViewModel
 
 
 @Composable
-fun QuestionAns(navController: NavHostController) {
+fun QuestionAns(navController: NavHostController,globalViewModel: GlobalModel) {
     val viewModel: QuestionAnswerViewModel = QuestionAnswerViewModel()
     var question: Questions? = null
     val context = LocalContext.current
     val root = viewModel.readJsonFromAssets(context = LocalContext.current, "questions.json")
     val isTimerRunning = viewModel.isTimerRunning.collectAsState()
     var temp = 0
+    val globalVariable = globalViewModel.globalVariable.collectAsState()
     var firstAswerTrue by remember { mutableStateOf(false) }
     var secondAswerTrue by remember { mutableStateOf(false) }
     var thirdAswerTrue by remember { mutableStateOf(false) }
@@ -192,8 +194,11 @@ fun QuestionAns(navController: NavHostController) {
                     ) {
                         Card(
                             modifier = Modifier.clickable {
-                                var temp = returnAnser(question)
 
+                                globalViewModel.updateGlobalVariable(globalVariable.value + 1)
+                                var temp = returnAnser(question)
+//                                println(globalVariable.value)
+                                Toast.makeText(context,""+globalVariable.value,Toast.LENGTH_SHORT).show()
                                 when (temp) {
                                     0 -> {
                                         firstAswerTrue = true
@@ -236,7 +241,9 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(0)?.countryName?:""),
+                                text = limitedLengthText(
+                                    question?.countries?.get(0)?.countryName ?: ""
+                                ),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
@@ -292,7 +299,9 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(1)?.countryName?:""),
+                                text = limitedLengthText(
+                                    question?.countries?.get(1)?.countryName ?: ""
+                                ),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
@@ -358,7 +367,9 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(2)?.countryName?:""),
+                                text = limitedLengthText(
+                                    question?.countries?.get(2)?.countryName ?: ""
+                                ),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
@@ -414,7 +425,9 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(3)?.countryName?:""),
+                                text = limitedLengthText(
+                                    question?.countries?.get(3)?.countryName ?: ""
+                                ),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
@@ -451,24 +464,20 @@ fun limitedLengthText(text: String): String {
         return text
     }
 
-//    Text(text = truncatedText)
 }
 
-
-fun checkTheAnswer(question: Questions?, position: Int): Boolean {
-    if (question?.answerId == question?.countries?.get(position)?.id) {
-        return true;
-    } else {
-        return false
-    }
-}
-
+/**
+ * Reteun answer
+ */
 fun returnAnser(question: Questions?): Int {
     var temp = question?.answerId
     var index = question?.countries?.indexOfFirst { it.id == temp }
     return index!!.toInt()
 }
 
+/**
+ * Set flags
+ */
 fun returnFlag(code: String?): Int {
     when (code?.lowercase()) {
         "nz" -> return R.drawable.nz
@@ -490,9 +499,12 @@ fun returnFlag(code: String?): Int {
     return return R.drawable.aw
 }
 
+/***
+ * Preview
+ */
 @Preview(showBackground = true)
 @Composable
 fun QuestionAnsPreview() {
     val navController = rememberNavController()
-    QuestionAns(navController)
+    QuestionAns(navController, GlobalModel())
 }
