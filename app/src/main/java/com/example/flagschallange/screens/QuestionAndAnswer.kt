@@ -117,54 +117,57 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
             )
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen._10dp)))
             Row(modifier = Modifier.fillMaxWidth()) {
-                Card(
-                    modifier = Modifier
-                        .height(dimensionResource(R.dimen._30dp))
-                        .width(dimensionResource(R.dimen._50dp)),
-                    colors = CardDefaults.cardColors(Color.Black),
-                    shape = RoundedCornerShape(
-                        topStart = 0.dp, bottomStart = 0.dp,
-                        topEnd = dimensionResource(R.dimen._5dp),
-                        bottomEnd = dimensionResource(R.dimen._5dp)
-                    ),
-                    elevation = CardDefaults.cardElevation(5.dp)
-                )
-                {
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Card(
-                            modifier = Modifier
-                                .height(dimensionResource(R.dimen._30dp))
-                                .width(dimensionResource(R.dimen._30dp)), shape = CircleShape,
-                            colors = CardDefaults.cardColors(AppColor.OrangeColor)
+                Box() {
+                    Card(
+                        modifier = Modifier
+                            .height(dimensionResource(R.dimen._30dp))
+                            .width(dimensionResource(R.dimen._50dp)),
+                        colors = CardDefaults.cardColors(Color.Black),
+                        shape = RoundedCornerShape(
+                            topStart = 0.dp, bottomStart = 0.dp,
+                            topEnd = dimensionResource(R.dimen._5dp),
+                            bottomEnd = dimensionResource(R.dimen._5dp)
+                        ),
+                        elevation = CardDefaults.cardElevation(5.dp)
+                    )
+                    {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
                         ) {
-
-                            Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
+                            Card(
+                                modifier = Modifier
+                                    .height(dimensionResource(R.dimen._30dp))
+                                    .width(dimensionResource(R.dimen._30dp)), shape = CircleShape,
+                                colors = CardDefaults.cardColors(AppColor.OrangeColor)
                             ) {
-                                Text(
-                                    text = temp.toString(), modifier = Modifier,
-                                    color = Color.White,
-                                    textAlign = TextAlign.Center,
-                                    fontWeight = FontWeight.Bold
 
-                                )
+                                Box(
+                                    modifier = Modifier.fillMaxSize(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = temp.toString(), modifier = Modifier,
+                                        color = Color.White,
+                                        textAlign = TextAlign.Center,
+                                        fontWeight = FontWeight.Bold
 
+                                    )
+
+                                }
                             }
                         }
+
+
                     }
 
-
+                    Text(
+                        text = "Guess the country from flag ?",
+                        modifier = Modifier.fillMaxWidth(),
+                        textAlign = TextAlign.Center
+                    )
                 }
 
-                Text(
-                    text = "Guess the country from flag ?",
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
-                )
             }
             Spacer(
                 modifier = Modifier
