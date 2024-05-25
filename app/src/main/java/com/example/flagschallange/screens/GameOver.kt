@@ -40,7 +40,7 @@ fun Result() {
         colors = CardDefaults.cardColors(AppColor.lightGray200)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            Heading()
+            Heading(null)
             Text(
                 "", modifier = Modifier
                     .fillMaxWidth()
@@ -77,7 +77,7 @@ fun FinalScore() {
         colors = CardDefaults.cardColors(AppColor.lightGray200)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            Heading()
+            Heading(null)
             Text(
                 "", modifier = Modifier
                     .fillMaxWidth()

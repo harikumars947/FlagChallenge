@@ -1,22 +1,49 @@
 package com.example.flagschallange.viewmodels
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.example.RootQuestions
 import com.google.gson.Gson
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
-class QuestionAnswerViewModel: ViewModel() {
+class QuestionAnswerViewModel : ViewModel() {
+    val _timeLeft = MutableStateFlow("00:00")
+    var _isrunning = MutableStateFlow(true)
+    val timeLeft: StateFlow<String> = _timeLeft
+    var isTimerRunning: StateFlow<Boolean> = _isrunning
 
-    /*fun questions(context: Context): RootQuestions? {
-        if (user == null) {
-            user = readJsonFromAssets(context, "data.json")
+    // Total time for the countdown in milliseconds
+    var totalTime = 5 * 1000
+    fun startTimer() {
+
+        viewModelScope.launch {
+            var timeMillis = totalTime
+            while (timeMillis >= 0) {
+                _timeLeft.value = formatTime(timeMillis.toLong())
+                delay(1000) // Update every second
+                timeMillis = timeMillis - 1000
+            }
+            _isrunning.value = false
+
         }
-        return user
-    }*/
 
-     fun readJsonFromAssets(context: Context, fileName: String): RootQuestions? {
+    }
+
+    private fun formatTime(millis: Long): String {
+        val seconds = millis / 1000
+        val minutes = seconds / 60
+        val remainingSeconds = seconds % 60
+        return String.format("%02d:%02d", minutes, remainingSeconds)
+    }
+
+    fun readJsonFromAssets(context: Context, fileName: String): RootQuestions? {
         return try {
             val inputStream = context.assets.open(fileName)
             val bufferedReader = BufferedReader(InputStreamReader(inputStream))
