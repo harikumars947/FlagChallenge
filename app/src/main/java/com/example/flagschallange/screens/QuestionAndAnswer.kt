@@ -173,7 +173,7 @@ fun QuestionAns(navController: NavHostController) {
                     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
 
                         Image(
-                            painter = rememberImagePainter(data = R.drawable.nz),
+                            painter = rememberImagePainter(data = returnFlag(question?.countryCode)),
                             contentDescription = "", // Provide a meaningful description
 
                             modifier = Modifier
@@ -247,7 +247,7 @@ fun QuestionAns(navController: NavHostController) {
                             )
                         }
                         Card(
-                            modifier =Modifier.clickable {
+                            modifier = Modifier.clickable {
                                 var temp = returnAnser(question)
 
                                 when (temp) {
@@ -313,7 +313,7 @@ fun QuestionAns(navController: NavHostController) {
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Card(
-                            modifier =Modifier.clickable {
+                            modifier = Modifier.clickable {
                                 var temp = returnAnser(question)
 
                                 when (temp) {
@@ -369,7 +369,7 @@ fun QuestionAns(navController: NavHostController) {
                             )
                         }
                         Card(
-                            modifier  =Modifier.clickable {
+                            modifier = Modifier.clickable {
                                 var temp = returnAnser(question)
 
                                 when (temp) {
@@ -469,6 +469,26 @@ fun returnAnser(question: Questions?): Int {
     return index!!.toInt()
 }
 
+fun returnFlag(code: String?): Int {
+    when (code?.lowercase()) {
+        "nz" -> return R.drawable.nz
+        "aw" -> return R.drawable.aw
+        "ec" -> return R.drawable.ec
+        "py" -> return R.drawable.py
+        "kg" -> return R.drawable.ky
+        "pm" -> return R.drawable.pm
+        "jp" -> return R.drawable.jp
+        "tm" -> return R.drawable.jp
+        "ga" -> return R.drawable.ga
+        "mq" -> return R.drawable.mq
+        "bz" -> return R.drawable.bz
+        "cz" -> return R.drawable.cz
+        "ae" -> return R.drawable.ae
+        "je" -> return R.drawable.je
+        "ls" -> return R.drawable.ls
+    }
+    return return R.drawable.aw
+}
 
 @Preview(showBackground = true)
 @Composable
