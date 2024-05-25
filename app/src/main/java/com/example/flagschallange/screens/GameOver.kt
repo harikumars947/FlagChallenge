@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -37,7 +38,7 @@ import com.example.flagschallange.viewmodels.GlobalModel
 fun Result() {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth().wrapContentHeight()
             .height(dimensionResource(R.dimen._150dp))
             .padding(
                 start = dimensionResource(R.dimen._15dp),
@@ -61,7 +62,7 @@ fun Result() {
                     "GAME OVER",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = dimensionResource(R.dimen._50dp)),
+                        ,
                     textAlign = TextAlign.Center,
                     fontSize = dimensionResource(R.dimen._20sp).value.sp,
                     fontWeight = FontWeight.Bold
@@ -80,7 +81,7 @@ fun FinalScore(globalViewModel: GlobalModel) {
     val globalVariable = globalViewModel.globalVariable.collectAsState()
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth().wrapContentHeight()
             .height(dimensionResource(R.dimen._150dp))
             .padding(
                 start = dimensionResource(R.dimen._15dp),

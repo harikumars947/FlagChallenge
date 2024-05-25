@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -97,7 +98,7 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
 
     Card(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth().wrapContentHeight()
             .padding(
                 start = dimensionResource(R.dimen._15dp),
                 end = dimensionResource(R.dimen._15dp),
