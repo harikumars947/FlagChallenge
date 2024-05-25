@@ -236,7 +236,7 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(0)?.countryName + ""),
+                                text = limitedLengthText(question?.countries?.get(0)?.countryName?:""),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
@@ -292,7 +292,7 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(1)?.countryName + ""),
+                                text = limitedLengthText(question?.countries?.get(1)?.countryName?:""),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
@@ -358,7 +358,7 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(2)?.countryName + ""),
+                                text = limitedLengthText(question?.countries?.get(2)?.countryName?:""),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
@@ -414,7 +414,7 @@ fun QuestionAns(navController: NavHostController) {
                             elevation = CardDefaults.cardElevation(5.dp)
                         ) {
                             Text(
-                                text = limitedLengthText(question?.countries?.get(3)?.countryName + ""),
+                                text = limitedLengthText(question?.countries?.get(3)?.countryName?:""),
                                 modifier = Modifier.padding(
                                     start = 20.dp, end = 20.dp,
                                     top = 5.dp, bottom = 5.dp
