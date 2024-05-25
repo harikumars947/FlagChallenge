@@ -31,7 +31,7 @@ import com.example.flagschallange.viewmodels.QuestionAnswerViewModel
 
 @Composable
 fun Heading(viewModel: QuestionAnswerViewModel?){
-    val timeLeft = viewModel?.timeLeft?.collectAsState()
+    val timeLeft = viewModel?.timeLeft
 
     Row(
         modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center,

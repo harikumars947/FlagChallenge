@@ -78,7 +78,7 @@ fun Result() {
 
 @Composable
 fun FinalScore(globalViewModel: GlobalModel) {
-    val globalVariable = globalViewModel.globalVariable.collectAsState()
+    val globalVariable = globalViewModel.globalVariable
     Card(
         modifier = Modifier
             .fillMaxWidth().wrapContentHeight()

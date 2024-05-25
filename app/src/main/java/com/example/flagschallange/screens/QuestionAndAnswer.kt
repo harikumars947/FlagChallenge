@@ -59,9 +59,9 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
     var question: Questions? = null
     val context = LocalContext.current
     val root = viewModel.readJsonFromAssets(context = LocalContext.current, "questions.json")
-    val isTimerRunning = viewModel.isTimerRunning.collectAsState()
+    val isTimerRunning = viewModel.isTimerRunning
     var temp = 0
-    val globalVariable = globalViewModel.globalVariable.collectAsState()
+    val globalVariable = globalViewModel.globalVariable
     var firstAswerTrue by remember { mutableStateOf(false) }
     var secondAswerTrue by remember { mutableStateOf(false) }
     var thirdAswerTrue by remember { mutableStateOf(false) }

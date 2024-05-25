@@ -1,6 +1,8 @@
 package com.example.flagschallange.viewmodels
 
 import android.content.Context
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,10 +16,10 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 
 class QuestionAnswerViewModel : ViewModel() {
-    val _timeLeft = MutableStateFlow("00:00")
-    var _isrunning = MutableStateFlow(true)
-    val timeLeft: StateFlow<String> = _timeLeft
-    var isTimerRunning: StateFlow<Boolean> = _isrunning
+    val _timeLeft = mutableStateOf("00:00")
+    var _isrunning = mutableStateOf(true)
+    val timeLeft: MutableState<String> = _timeLeft
+    var isTimerRunning: MutableState<Boolean> = _isrunning
 
     // Total time for the countdown in milliseconds
     var totalTime = 5 * 1000
