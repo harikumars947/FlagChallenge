@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -39,6 +40,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.flagschallange.R
 import com.example.flagschallange.ui.theme.AppColor
 import com.example.flagschallange.ui.theme.FlagsChallangeTheme
 
@@ -48,8 +50,13 @@ fun Schedule() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 15.dp, end = 15.dp, top = 15.dp),
-        RoundedCornerShape(5.dp),
+            .padding(
+                start = dimensionResource(R.dimen._15dp),
+                end = dimensionResource(R.dimen._15dp),
+                top = dimensionResource(R.dimen._15dp),
+                bottom = dimensionResource(R.dimen._15dp)
+            ),
+        RoundedCornerShape(dimensionResource(R.dimen._5dp)),
         colors = CardDefaults.cardColors(AppColor.lightGray200)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -57,19 +64,19 @@ fun Schedule() {
             Text(
                 "", modifier = Modifier
                     .fillMaxWidth()
-                    .height(1.dp)
+                    .height(dimensionResource(R.dimen._1dp))
                     .background(color = Color.LightGray)
             )
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen._5dp)))
             Text(
                 "SCHEDULE",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 50.dp),
+                  ,
                 textAlign = TextAlign.Center,
-                fontSize = 20.sp, fontWeight = FontWeight.Bold
+                fontSize = dimensionResource(R.dimen._20sp).value.sp, fontWeight = FontWeight.Bold
             )
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen._5dp)))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceAround
@@ -80,8 +87,8 @@ fun Schedule() {
                     Row() {
                         Card(
                             modifier = Modifier
-                                .width(50.dp)
-                                .height(50.dp),
+                                .width(dimensionResource(R.dimen._50dp))
+                                .height(dimensionResource(R.dimen._50dp)),
                             colors = CardDefaults.cardColors(Color.LightGray)
                         ) {
                             Box(
@@ -100,11 +107,11 @@ fun Schedule() {
                             }
 
                         }
-                        Spacer(modifier = Modifier.width(5.dp))
+                        Spacer(modifier = Modifier.width(dimensionResource(R.dimen._5dp)))
                         Card(
                             modifier = Modifier
-                                .width(50.dp)
-                                .height(50.dp),
+                                .width(dimensionResource(R.dimen._50dp))
+                                .height(dimensionResource(R.dimen._50dp)),
                             colors = CardDefaults.cardColors(Color.LightGray)
                         ) {
                             Box(
@@ -133,8 +140,8 @@ fun Schedule() {
                     Row() {
                         Card(
                             modifier = Modifier
-                                .width(50.dp)
-                                .height(50.dp),
+                                .width(dimensionResource(R.dimen._50dp))
+                                .height(dimensionResource(R.dimen._50dp)),
                             colors = CardDefaults.cardColors(Color.LightGray)
                         ) {
                             Box(
@@ -153,11 +160,11 @@ fun Schedule() {
                             }
 
                         }
-                        Spacer(modifier = Modifier.width(5.dp))
+                        Spacer(modifier = Modifier.width(dimensionResource(R.dimen._5dp)))
                         Card(
                             modifier = Modifier
-                                .width(50.dp)
-                                .height(50.dp),
+                                .width(dimensionResource(R.dimen._50dp))
+                                .height(dimensionResource(R.dimen._50dp)),
                             colors = CardDefaults.cardColors(Color.LightGray)
                         ) {
                             Box(
@@ -185,8 +192,8 @@ fun Schedule() {
                     Row() {
                         Card(
                             modifier = Modifier
-                                .width(50.dp)
-                                .height(50.dp),
+                                .width(dimensionResource(R.dimen._50dp))
+                                .height(dimensionResource(R.dimen._50dp)),
                             colors = CardDefaults.cardColors(Color.LightGray)
                         ) {
                             Box(
@@ -205,11 +212,11 @@ fun Schedule() {
                             }
 
                         }
-                        Spacer(modifier = Modifier.width(5.dp))
+                        Spacer(modifier = Modifier.width(dimensionResource(R.dimen._5dp)))
                         Card(
                             modifier = Modifier
-                                .width(50.dp)
-                                .height(50.dp),
+                                .width(dimensionResource(R.dimen._50dp))
+                                .height(dimensionResource(R.dimen._50dp)),
                             colors = CardDefaults.cardColors(Color.LightGray)
                         ) {
                             Box(
@@ -232,14 +239,14 @@ fun Schedule() {
                 }
                 //=======================================================
             }
-            Spacer(modifier = Modifier.height(15.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen._15dp)))
             Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Center) {
                 Card(
                     modifier = Modifier
-                        .height(30.dp)
-                        .width(90.dp),
+                        .height(dimensionResource(R.dimen._30dp))
+                        .width(dimensionResource(R.dimen._90dp)),
                     colors = CardDefaults.cardColors(AppColor.OrangeColor),
-                    shape = RoundedCornerShape(5.dp)
+                    shape = RoundedCornerShape(dimensionResource(R.dimen._5dp))
                 )
                 {
                     Box(
@@ -254,7 +261,7 @@ fun Schedule() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen._10dp)))
 
 
         }

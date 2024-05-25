@@ -1,7 +1,6 @@
 package com.example.flagschallange.screens
 
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -41,6 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.flagschallange.R
 import com.example.flagschallange.ui.theme.AppColor
 import com.example.flagschallange.ui.theme.FlagsChallangeTheme
 
@@ -50,8 +51,13 @@ fun Remainder() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 15.dp, end = 15.dp, top = 15.dp),
-        RoundedCornerShape(5.dp),
+            .padding(
+                start = dimensionResource(R.dimen._15dp),
+                end = dimensionResource(R.dimen._15dp),
+                top = dimensionResource(R.dimen._15dp),
+                bottom = dimensionResource(R.dimen._15dp)
+            ),
+        RoundedCornerShape(dimensionResource(R.dimen._5dp)),
         colors = CardDefaults.cardColors(AppColor.lightGray200)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -59,34 +65,31 @@ fun Remainder() {
             Text(
                 "", modifier = Modifier
                     .fillMaxWidth()
-                    .height(1.dp)
+                    .height(dimensionResource(R.dimen._1dp))
                     .background(color = Color.LightGray)
             )
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(R.dimen._5dp)))
             Text(
                 "CHALLENGE",
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 50.dp),
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontSize = 20.sp, fontWeight = FontWeight.Normal
+                fontSize = dimensionResource(R.dimen._20dp).value.sp, fontWeight = FontWeight.Normal
             )
             Text(
                 "WILL START IN",
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 50.dp),
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontSize = 20.sp, fontWeight = FontWeight.Bold
+                fontSize = dimensionResource(R.dimen._20dp).value.sp, fontWeight = FontWeight.Bold
             )
             Text(
                 "00:20",
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 50.dp),
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                color = Color.LightGray,
-                fontSize = 20.sp, fontWeight = FontWeight.Bold
+                color = Color.DarkGray,
+                fontSize = dimensionResource(R.dimen._20dp).value.sp, fontWeight = FontWeight.Bold
             )
         }
 //

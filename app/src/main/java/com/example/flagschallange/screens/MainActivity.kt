@@ -70,7 +70,7 @@ class MainActivity : ComponentActivity() {
 fun navigation() {
     val globalViewModel: GlobalModel = viewModel()
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Constants.QUESTIO_ANSWER_SCREEN) {
+   NavHost(navController = navController, startDestination = Constants.QUESTIO_ANSWER_SCREEN) {
         composable(Constants.QUESTIO_ANSWER_SCREEN) {
             QuestionAns(navController, globalViewModel)
         }
@@ -81,19 +81,6 @@ fun navigation() {
         composable(Constants.SCORE) {
             FinalScore(globalViewModel)
         }
-        /*composable(
-            "mainscreen/{user}",
-            arguments = listOf(navArgument("user") {
-                type = NavType.ParcelableType(USerList::class.java)
-            })
-        )
-        { backStackEntry ->
-            val user = backStackEntry.arguments?.getParcelable<USerList>("user")
-            MainScreen(user)
-        }*/
-
-
-        //composable("listingscreen") { ProfileListScreen(navController) }
 
     }
 }
