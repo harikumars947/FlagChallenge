@@ -110,14 +110,16 @@ fun FinalScore(globalViewModel: GlobalModel) {
                         "Score : ",
                         modifier = Modifier,
                         textAlign = TextAlign.Center,
-                        fontSize = dimensionResource(R.dimen._20sp).value.sp, fontWeight = FontWeight.Normal,
+                        fontSize = dimensionResource(R.dimen._20sp).value.sp,
+                        fontWeight = FontWeight.Normal,
                         color = AppColor.OrangeColor
                     )
                     Text(
                         "${globalVariable.value}/15",
                         modifier = Modifier.padding(start = dimensionResource(R.dimen._10dp)),
                         textAlign = TextAlign.Center,
-                        fontSize =dimensionResource(R.dimen._20sp).value.sp, fontWeight = FontWeight.Bold,
+                        fontSize = dimensionResource(R.dimen._20sp).value.sp,
+                        fontWeight = FontWeight.Bold,
                         color = Color.DarkGray
                     )
                 }
