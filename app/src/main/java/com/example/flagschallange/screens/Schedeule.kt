@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,6 +29,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -40,6 +45,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
@@ -51,11 +57,18 @@ import com.example.flagschallange.Constants
 import com.example.flagschallange.R
 import com.example.flagschallange.ui.theme.AppColor
 import com.example.flagschallange.ui.theme.FlagsChallangeTheme
+import java.lang.Character.isDigit
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Schedule(navController: NavHostController) {
-    var context= LocalContext.current
+    var context = LocalContext.current
+    var hour_1 by remember { mutableStateOf("0") }
+    var hour_2 by remember { mutableStateOf("0") }
+    var minute_1 by remember { mutableStateOf("0") }
+    var minute_2 by remember { mutableStateOf("0") }
+    var second_1 by remember { mutableStateOf("0") }
+    var second_2 by remember { mutableStateOf("0") }
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -81,8 +94,7 @@ fun Schedule(navController: NavHostController) {
             Text(
                 "SCHEDULE",
                 modifier = Modifier
-                    .fillMaxWidth()
-                  ,
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 fontSize = dimensionResource(R.dimen._20sp).value.sp, fontWeight = FontWeight.Bold
             )
@@ -107,12 +119,19 @@ fun Schedule(navController: NavHostController) {
                                 contentAlignment = Alignment.Center // Center the content within the Box
                             ) {
                                 BasicTextField(
-                                    value = "0", onValueChange = {},
+                                    value = hour_1,
+                                    onValueChange = { newValue: String ->
+                                        if (newValue.all { it.isDigit() } &&  newValue.length <=2) {
+                                            hour_1 = newValue
+                                        }
+                                    },
                                     modifier = Modifier.background(Color.LightGray),
+                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                                     textStyle = TextStyle(
                                         textAlign = TextAlign.Center,  // Set text alignment to center
                                         fontSize = 18.sp
-                                    ),
+
+                                    )
                                 )
                             }
 
@@ -130,12 +149,19 @@ fun Schedule(navController: NavHostController) {
                                 contentAlignment = Alignment.Center // Center the content within the Box
                             ) {
                                 BasicTextField(
-                                    value = "0", onValueChange = {},
+                                    value = hour_2,
+                                    onValueChange = { newValue: String ->
+                                        if (newValue.all { it.isDigit() } &&  newValue.length <=2) {
+                                            hour_2 = newValue
+                                        }
+                                    },
                                     modifier = Modifier.background(Color.LightGray),
+                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                                     textStyle = TextStyle(
                                         textAlign = TextAlign.Center,  // Set text alignment to center
                                         fontSize = 18.sp
-                                    ),
+
+                                    )
                                 )
                             }
 
@@ -160,12 +186,19 @@ fun Schedule(navController: NavHostController) {
                                 contentAlignment = Alignment.Center // Center the content within the Box
                             ) {
                                 BasicTextField(
-                                    value = "0", onValueChange = {},
+                                    value = minute_1,
+                                    onValueChange = { newValue: String ->
+                                        if (newValue.all { it.isDigit() } &&  newValue.length <=2) {
+                                            minute_1 = newValue
+                                        }
+                                    },
                                     modifier = Modifier.background(Color.LightGray),
+                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                                     textStyle = TextStyle(
                                         textAlign = TextAlign.Center,  // Set text alignment to center
                                         fontSize = 18.sp
-                                    ),
+
+                                    )
                                 )
                             }
 
@@ -183,12 +216,19 @@ fun Schedule(navController: NavHostController) {
                                 contentAlignment = Alignment.Center // Center the content within the Box
                             ) {
                                 BasicTextField(
-                                    value = "0", onValueChange = {},
+                                    value = minute_2,
+                                    onValueChange = { newValue: String ->
+                                        if (newValue.all { it.isDigit() } &&  newValue.length <=2) {
+                                            minute_2 = newValue
+                                        }
+                                    },
                                     modifier = Modifier.background(Color.LightGray),
+                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                                     textStyle = TextStyle(
                                         textAlign = TextAlign.Center,  // Set text alignment to center
                                         fontSize = 18.sp
-                                    ),
+
+                                    )
                                 )
                             }
 
@@ -212,12 +252,19 @@ fun Schedule(navController: NavHostController) {
                                 contentAlignment = Alignment.Center // Center the content within the Box
                             ) {
                                 BasicTextField(
-                                    value = "0", onValueChange = {},
+                                    value = second_1,
+                                    onValueChange = { newValue: String ->
+                                        if (newValue.all { it.isDigit() } &&  newValue.length <=2) {
+                                            second_1 = newValue
+                                        }
+                                    },
                                     modifier = Modifier.background(Color.LightGray),
+                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                                     textStyle = TextStyle(
                                         textAlign = TextAlign.Center,  // Set text alignment to center
                                         fontSize = 18.sp
-                                    ),
+
+                                    )
                                 )
                             }
 
@@ -235,12 +282,19 @@ fun Schedule(navController: NavHostController) {
                                 contentAlignment = Alignment.Center // Center the content within the Box
                             ) {
                                 BasicTextField(
-                                    value = "0", onValueChange = {},
+                                    value = second_2,
+                                    onValueChange = { newValue: String ->
+                                        if (newValue.all { it.isDigit() } &&  newValue.length <=2) {
+                                            second_2 = newValue
+                                        }
+                                    },
                                     modifier = Modifier.background(Color.LightGray),
+                                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                                     textStyle = TextStyle(
                                         textAlign = TextAlign.Center,  // Set text alignment to center
                                         fontSize = 18.sp
-                                    ),
+
+                                    )
                                 )
                             }
 
@@ -286,6 +340,6 @@ fun Schedule(navController: NavHostController) {
 @Preview(showBackground = true)
 @Composable
 fun SchedulePreview() {
-    val rememberNavController= rememberNavController()
+    val rememberNavController = rememberNavController()
     Schedule(rememberNavController)
 }
