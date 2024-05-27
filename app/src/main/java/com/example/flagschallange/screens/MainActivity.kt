@@ -89,7 +89,7 @@ fun navigation() {
             QuestionAns(navController, globalViewModel)
         }
         composable(Constants.GAME_OVER) {
-            Result()
+            Result(navController, globalViewModel)
         }
 
         composable(Constants.SCORE) {

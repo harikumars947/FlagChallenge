@@ -22,7 +22,7 @@ class QuestionAnswerViewModel : ViewModel() {
     var isTimerRunning: MutableState<Boolean> = _isrunning
 
     // Total time for the countdown in milliseconds
-    var totalTime = 5 * 1000
+    var totalTime = 2 * 1000
     fun startTimer() {
 
         viewModelScope.launch {

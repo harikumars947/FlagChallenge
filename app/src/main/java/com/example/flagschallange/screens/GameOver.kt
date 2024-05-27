@@ -19,6 +19,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,16 +30,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.flagschallange.Constants
 import com.example.flagschallange.R
 import com.example.flagschallange.ui.theme.AppColor
 import com.example.flagschallange.viewmodels.GlobalModel
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Result() {
+fun Result(navController: NavHostController, globalViewModel: GlobalModel) {
     Card(
         modifier = Modifier
-            .fillMaxWidth().wrapContentHeight()
+            .fillMaxWidth()
+            .wrapContentHeight()
             .height(dimensionResource(R.dimen._150dp))
             .padding(
                 start = dimensionResource(R.dimen._15dp),
@@ -61,8 +66,7 @@ fun Result() {
                 Text(
                     "GAME OVER",
                     modifier = Modifier
-                        .fillMaxWidth()
-                        ,
+                        .fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontSize = dimensionResource(R.dimen._20sp).value.sp,
                     fontWeight = FontWeight.Bold
@@ -73,6 +77,10 @@ fun Result() {
 
 //
     }
+    LaunchedEffect(true) {
+        delay(1000)
+        navController.navigate(Constants.SCORE)
+    }
 
 }
 
@@ -81,7 +89,8 @@ fun FinalScore(globalViewModel: GlobalModel) {
     val globalVariable = globalViewModel.globalVariable
     Card(
         modifier = Modifier
-            .fillMaxWidth().wrapContentHeight()
+            .fillMaxWidth()
+            .wrapContentHeight()
             .height(dimensionResource(R.dimen._150dp))
             .padding(
                 start = dimensionResource(R.dimen._15dp),

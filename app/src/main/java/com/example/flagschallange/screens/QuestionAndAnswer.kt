@@ -89,7 +89,7 @@ fun QuestionAns(navController: NavHostController, globalViewModel: GlobalModel) 
                 sharedPreferences?.edit()?.putInt("count", ++temp)?.apply()
             } else {
                 sharedPreferences?.edit()?.putInt("count", 0)?.apply()
-                navController.navigate(Constants.SCORE)
+                navController.navigate(Constants.GAME_OVER)
             }
 
         }
